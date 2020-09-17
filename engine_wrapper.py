@@ -12,6 +12,8 @@ def create_engine(config, board):
     engine_type = cfg.get("protocol")
     engine_options = cfg.get("engine_options")
     commands = [engine_path]
+    if cfg["python"]: 
+        commands.insert(0, cfg["python"])
     if engine_options:
         for k, v in engine_options.items():
             commands.append("--{}={}".format(k, v))
